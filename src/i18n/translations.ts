@@ -44,6 +44,12 @@ export interface Content {
     audioFallback: string
     prevLabel: string
     nextLabel: string
+    showcaseTitle: string
+    playLabel: string
+    pauseLabel: string
+    soundOnLabel: string
+    soundOffLabel: string
+    expandLabel: string
     items: {
       id: string
       category: string
@@ -155,6 +161,12 @@ export const translations: Record<Locale, Content> = {
       audioFallback: 'Votre navigateur ne supporte pas la lecture audio.',
       prevLabel: 'Projet précédent',
       nextLabel: 'Projet suivant',
+      showcaseTitle: 'Nos projets en action',
+      playLabel: 'Lire la vidéo',
+      pauseLabel: 'Mettre en pause',
+      soundOnLabel: 'Activer le son',
+      soundOffLabel: 'Couper le son',
+      expandLabel: 'Voir en grand',
       items: [
         {
           id: 'p1',
@@ -323,6 +335,12 @@ export const translations: Record<Locale, Content> = {
       audioFallback: 'متصفحك لا يدعم تشغيل الصوت.',
       prevLabel: 'المشروع السابق',
       nextLabel: 'المشروع التالي',
+      showcaseTitle: 'مشاريعنا في العمل',
+      playLabel: 'تشغيل الفيديو',
+      pauseLabel: 'إيقاف مؤقت',
+      soundOnLabel: 'تفعيل الصوت',
+      soundOffLabel: 'كتم الصوت',
+      expandLabel: 'عرض بحجم أكبر',
       items: [
         {
           id: 'p1',

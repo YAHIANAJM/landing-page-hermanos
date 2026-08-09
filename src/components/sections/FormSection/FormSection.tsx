@@ -21,6 +21,7 @@ export default function FormSection() {
   const [form, setForm] = useState<QualificationFormData>(emptyForm)
   const [sent, setSent] = useState(false)
   const [error, setError] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
@@ -31,6 +32,7 @@ export default function FormSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setError(false)
+    setSubmitting(true)
 
     const serviceLabel = t.form.serviceOptions.find((s) => s.id === form.service)?.label ?? form.service
 
@@ -57,6 +59,8 @@ export default function FormSection() {
       setForm(emptyForm)
     } catch {
       setError(true)
+    } finally {
+      setSubmitting(false)
     }
   }
 
@@ -70,7 +74,7 @@ export default function FormSection() {
             <p className={styles.sub}>{t.form.sub}</p>
           </div>
 
-          <form className={styles.form} onSubmit={handleSubmit} noValidate>
+          <form className={styles.form} onSubmit={handleSubmit}>
             <div className={styles.row}>
               <div className={styles.field}>
                 <label className={styles.label} htmlFor="firstName">{t.form.firstName.label}</label>
@@ -141,8 +145,8 @@ export default function FormSection() {
               <div className={styles.errorMsg}>{t.form.error}</div>
             )}
 
-            <Button type="submit" variant="vip" size="lg" fullWidth>
-              {t.form.submit}
+            <Button type="submit" variant="vip" size="lg" fullWidth disabled={submitting}>
+              {submitting ? <span className={styles.spinner} aria-hidden="true" /> : t.form.submit}
             </Button>
           </form>
         </div>

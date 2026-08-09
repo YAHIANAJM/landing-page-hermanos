@@ -194,75 +194,10 @@
   }
 }
 
-/* Below 768px the section links live in BottomNav instead */
+/* Below 768px BottomNav + FloatingCTA cover navigation, so the whole top bar is dropped */
 @media (max-width: 768px) {
-  .subRow {
+  .header {
     display: none;
   }
 }
 
-@media (max-width: 640px) {
-  .leftGroup {
-    gap: var(--sp-2);
-  }
-
-  .social {
-    gap: var(--sp-2);
-    padding-inline-end: var(--sp-2);
-  }
-
-  .socialLink {
-    width: 32px;
-    height: 32px;
-  }
-
-  .socialLink:nth-child(n + 3) {
-    display: none;
-  }
-
-  .langSwitcher {
-    font-size: 0.65rem;
-  }
-
-  .logoImg {
-    height: 36px;
-  }
-
-  .cta {
-    padding-inline-start: calc(var(--sp-3) + 1rem);
-    margin-inline-start: var(--sp-3);
-  }
-
-  .cta span:first-child {
-    display: none;
-  }
-}
-
-@media (max-width: 480px) {
-  .topRow {
-    gap: var(--sp-2);
-    padding-inline: var(--sp-3);
-  }
-
-  .social {
-    display: none;
-  }
-
-  .langSwitcher {
-    font-size: 0.6rem;
-  }
-
-  .logoImg {
-    height: 28px;
-  }
-
-  .cta {
-    margin-inline-start: var(--sp-2);
-    padding-inline-start: calc(var(--sp-2) + 0.9rem);
-  }
-
-  .ctaArrow {
-    width: 28px;
-    height: 28px;
-  }
-}

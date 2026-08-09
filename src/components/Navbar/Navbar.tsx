@@ -4,11 +4,10 @@ import { SocialLink } from '@/types'
 import { NAV_REVEAL_THRESHOLD, useScrollPast } from '@/hooks/useScrollPast'
 import { useTranslations } from '@/i18n/LocaleContext'
 
-/* Swap hrefs with the real Tech Hermanos social profiles */
 const socialLinks: SocialLink[] = [
-  { label: 'Instagram', href: 'https://instagram.com/techhermanos', icon: 'instagram' },
+  { label: 'Instagram', href: 'https://instagram.com/tech_hermanos_org', icon: 'instagram' },
   { label: 'TikTok', href: 'https://tiktok.com/@techhermanos', icon: 'tiktok' },
-  { label: 'LinkedIn', href: 'https://linkedin.com/company/techhermanos', icon: 'linkedin' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/tech-hermanos', icon: 'linkedin' },
 ]
 
 const icons: Record<SocialLink['icon'], JSX.Element> = {

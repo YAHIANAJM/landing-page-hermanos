@@ -2,9 +2,9 @@ import styles from './Footer.module.css'
 import { useTranslations } from '@/i18n/LocaleContext'
 
 const socialLinks = [
-  { label: 'Instagram', href: 'https://instagram.com/techhermanos', icon: 'instagram' },
+  { label: 'Instagram', href: 'https://instagram.com/tech_hermanos_org', icon: 'instagram' },
   { label: 'TikTok', href: 'https://tiktok.com/@techhermanos', icon: 'tiktok' },
-  { label: 'LinkedIn', href: 'https://linkedin.com/company/techhermanos', icon: 'linkedin' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/tech-hermanos', icon: 'linkedin' },
 ] as const
 
 const icons: Record<(typeof socialLinks)[number]['icon'], JSX.Element> = {
@@ -81,13 +81,13 @@ export default function Footer() {
             <h3 className={styles.colTitle}>{t.footer.contactTitle}</h3>
             <ul className={styles.linkList}>
               <li>
-                <a href="mailto:hello@techhermanos.com" className={styles.link}>
-                  hello@techhermanos.com
+                <a href="mailto:contact@techermanos.org" className={styles.link}>
+                  contact@techermanos.org
                 </a>
               </li>
               <li>
-                <a href="https://wa.me/212600000000" target="_blank" rel="noreferrer" className={styles.link}>
-                  +212 6 00 00 00 00
+                <a href="https://wa.me/212703285402" target="_blank" rel="noreferrer" className={styles.link}>
+                  +212 7 03 28 54 02
                 </a>
               </li>
               <li className={styles.muted}>{t.footer.address}</li>
@@ -99,10 +99,6 @@ export default function Footer() {
           <p className={styles.copy}>
             © {new Date().getFullYear()} {t.footer.copyrightSuffix}
           </p>
-          <div className={styles.legal}>
-            <a href="#" className={styles.legalLink}>{t.footer.legal.privacy}</a>
-            <a href="#" className={styles.legalLink}>{t.footer.legal.terms}</a>
-          </div>
         </div>
       </div>
     </footer>
