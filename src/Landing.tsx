@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { useAutoScrollToForm } from '@/hooks/useAutoScrollToForm'
 import Preloader from '@/components/Preloader/Preloader'
 import TopBar from '@/components/TopBar/TopBar'
 import Navbar from '@/components/Navbar/Navbar'
@@ -14,6 +15,8 @@ import { Locale, translations } from '@/i18n/translations'
 
 export default function Landing({ locale }: { locale: Locale }) {
   const t = translations[locale]
+
+  useAutoScrollToForm('form-section', 5000)
 
   useEffect(() => {
     document.documentElement.lang = locale

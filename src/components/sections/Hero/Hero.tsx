@@ -10,11 +10,6 @@ export default function Hero() {
       <div className="container">
         <div className={styles.inner}>
           <div className={styles.content}>
-            <div className={styles.badge}>
-              <span className={styles.dot} />
-              {t.hero.badge}
-            </div>
-
             <h1 className={styles.heading}>
               {t.hero.heading.line1}
               <br />
