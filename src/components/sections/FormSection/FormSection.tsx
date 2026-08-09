@@ -34,11 +34,6 @@ export default function FormSection() {
 
     const serviceLabel = t.form.serviceOptions.find((s) => s.id === form.service)?.label ?? form.service
 
-    window.fbq?.('track', 'Lead', {
-      content_name: serviceLabel,
-      content_category: 'Qualification VIP',
-    })
-
     try {
       await fetch(SHEET_WEBHOOK_URL, {
         method: 'POST',
@@ -51,6 +46,13 @@ export default function FormSection() {
           service: serviceLabel,
         }),
       })
+
+      // Fire only on a confirmed successful submission, not on click
+      window.fbq?.('track', 'Lead', {
+        content_name: serviceLabel,
+        content_category: 'Qualification VIP',
+      })
+
       setSent(true)
       setForm(emptyForm)
     } catch {
