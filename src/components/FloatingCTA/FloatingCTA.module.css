@@ -1,0 +1,93 @@
+.cta {
+  position: fixed;
+  left: 50%;
+  bottom: clamp(1.25rem, 4vw, 2rem);
+  z-index: 45;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: 1rem 1.75rem;
+  border-radius: var(--radius-full);
+  background: var(--gradient-maroon);
+  color: #fff;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  box-shadow: var(--shadow-xl);
+  transform: translate(-50%, 0);
+  opacity: 1;
+  animation: ctaPulse 2.4s var(--ease) infinite;
+  transition: opacity 320ms var(--ease), transform 320ms var(--ease);
+}
+
+.hidden {
+  opacity: 0;
+  transform: translate(-50%, 24px);
+  pointer-events: none;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  border-radius: var(--radius-full);
+  background: var(--vip-gold);
+  box-shadow: 0 0 10px var(--vip-gold);
+}
+
+.arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  border-radius: var(--radius-full);
+  background: #fff;
+  color: var(--navy);
+}
+
+.arrow svg {
+  width: 16px;
+  height: 16px;
+}
+
+[dir='rtl'] .arrow {
+  transform: scaleX(-1);
+}
+
+@keyframes ctaPulse {
+  0% {
+    box-shadow: var(--shadow-xl), 0 0 0 0 rgba(109, 16, 32, 0.45);
+  }
+  70% {
+    box-shadow: var(--shadow-xl), 0 0 0 14px rgba(109, 16, 32, 0);
+  }
+  100% {
+    box-shadow: var(--shadow-xl), 0 0 0 0 rgba(109, 16, 32, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta {
+    animation: none;
+  }
+}
+
+/* Clear BottomNav, which takes over the bottom edge below 768px */
+@media (max-width: 768px) {
+  .cta {
+    bottom: calc(64px + 0.75rem);
+  }
+}
+
+@media (max-width: 560px) {
+  .cta {
+    width: calc(100% - 2.5rem);
+    justify-content: center;
+    font-size: var(--text-xs);
+    padding: 0.9rem 1.25rem;
+  }
+}
