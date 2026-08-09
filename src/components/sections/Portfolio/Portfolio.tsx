@@ -18,6 +18,13 @@ const showcaseVideos = [
     audioSrc: '/audio/portfolio-voiceover-2.mp3',
     rating: 5,
   },
+  {
+    id: 'demo-3',
+    src: '/videos/project-demo-3.mp4',
+    poster: '/images/portfolio/project-demo-3-poster.jpg',
+    audioSrc: '/audio/portfolio-voiceover-3.mp3',
+    rating: 5,
+  },
 ]
 
 const StarIcon = () => (
