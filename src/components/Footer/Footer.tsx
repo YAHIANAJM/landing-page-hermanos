@@ -90,6 +90,11 @@ export default function Footer() {
                   +212 7 03 28 54 02
                 </a>
               </li>
+              <li>
+                <a href="https://www.techermanos.org/" target="_blank" rel="noreferrer" className={styles.link}>
+                  www.techermanos.org
+                </a>
+              </li>
               <li className={styles.muted}>{t.footer.address}</li>
             </ul>
           </div>
