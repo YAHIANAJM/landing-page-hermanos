@@ -3,8 +3,8 @@ import { useTranslations } from '@/i18n/LocaleContext'
 
 const socialLinks = [
   { label: 'Instagram', href: 'https://instagram.com/tech_hermanos_org', icon: 'instagram' },
-  { label: 'TikTok', href: 'https://tiktok.com/@techhermanos', icon: 'tiktok' },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/tech-hermanos', icon: 'linkedin' },
+  { label: 'Facebook', href: 'https://www.facebook.com/share/19LxqegetN/?mibextid=wwXIfr', icon: 'facebook' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/techermanos/', icon: 'linkedin' },
 ] as const
 
 const icons: Record<(typeof socialLinks)[number]['icon'], JSX.Element> = {
@@ -15,14 +15,14 @@ const icons: Record<(typeof socialLinks)[number]['icon'], JSX.Element> = {
       <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none" />
     </svg>
   ),
+  facebook: (
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.7c0-.9.3-1.6 1.6-1.6h1.7V3.2C16.5 3.1 15.4 3 14.2 3c-2.6 0-4.4 1.6-4.4 4.5v2.3H7.1v3.2h2.7v8h3.7z" />
+    </svg>
+  ),
   linkedin: (
     <svg viewBox="0 0 24 24" fill="currentColor">
       <path d="M6.9 8.6H3.5V20h3.4V8.6ZM5.2 4c-1.2 0-2 .8-2 1.9 0 1 .8 1.9 2 1.9 1.2 0 2-.8 2-1.9C7.2 4.8 6.4 4 5.2 4ZM20.5 20h-3.4v-6c0-1.5-.5-2.5-1.9-2.5-1 0-1.6.7-1.9 1.4-.1.2-.1.6-.1.9V20H9.8s.1-10.5 0-11.4h3.4v1.6c.4-.7 1.3-1.7 3.1-1.7 2.3 0 4.1 1.5 4.1 4.7V20Z" />
-    </svg>
-  ),
-  tiktok: (
-    <svg viewBox="0 0 24 24" fill="currentColor">
-      <path d="M14.6 3h2.6c.2 1.5 1.1 3 2.4 3.8.9.6 2 .9 3.1 1v2.7c-1.5 0-3-.4-4.3-1.2v6.1c0 3.4-2.7 5.9-6 5.9s-6-2.6-6-5.9 2.7-5.9 6-5.9c.3 0 .6 0 .9.1v2.8c-.3-.1-.6-.2-.9-.2-1.6 0-2.9 1.3-2.9 3.1s1.3 3.1 2.9 3.1 3-1.2 3-3.1V3Z" />
     </svg>
   ),
 }
