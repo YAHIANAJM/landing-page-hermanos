@@ -34,6 +34,7 @@
   align-items: center;
   gap: var(--sp-4);
   justify-self: start;
+  min-width: 0;
 }
 
 .social {
@@ -123,6 +124,8 @@
   margin-inline-start: var(--sp-5);
   border-inline-start: 1px solid var(--border);
   padding-inline-start: calc(var(--sp-5) + 1.25rem);
+  min-width: 0;
+  flex-shrink: 0;
 }
 
 .cta:hover {
@@ -232,5 +235,34 @@
 
   .cta span:first-child {
     display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .topRow {
+    gap: var(--sp-2);
+    padding-inline: var(--sp-3);
+  }
+
+  .social {
+    display: none;
+  }
+
+  .langSwitcher {
+    font-size: 0.6rem;
+  }
+
+  .logoImg {
+    height: 28px;
+  }
+
+  .cta {
+    margin-inline-start: var(--sp-2);
+    padding-inline-start: calc(var(--sp-2) + 0.9rem);
+  }
+
+  .ctaArrow {
+    width: 28px;
+    height: 28px;
   }
 }
