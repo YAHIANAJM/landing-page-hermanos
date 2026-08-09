@@ -33,7 +33,6 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Drop the recorded pitch video at /public/videos/pitch.mp4 (+ .webm) and a still frame at /public/images/pitch-poster.jpg */}
           <div className={styles.videoCol}>
             <div className={styles.videoCard}>
               <video

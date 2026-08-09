@@ -64,6 +64,7 @@ export interface Content {
     service: { label: string; placeholder: string }
     serviceOptions: { id: ServiceType; label: string }[]
     success: string
+    error: string
     submit: string
     whatsappMessage: {
       title: string
@@ -231,7 +232,8 @@ export const translations: Record<Locale, Content> = {
         { id: 'system', label: 'Système sur mesure' },
         { id: 'ads', label: 'Plateforme Publicitaire' },
       ],
-      success: "Demande envoyée ! Vérifiez WhatsApp : un membre de l'équipe vous répond sous 24h.",
+      success: "Demande envoyée ! Un membre de l'équipe vous contacte sur WhatsApp sous 24h.",
+      error: "Une erreur s'est produite. Merci de réessayer ou de nous contacter directement.",
       submit: 'Envoyer ma demande VIP ↗',
       whatsappMessage: {
         title: 'Demande VIP · Tech Hermanos',
@@ -398,7 +400,8 @@ export const translations: Record<Locale, Content> = {
         { id: 'system', label: 'نظام مخصص' },
         { id: 'ads', label: 'منصة إعلانية' },
       ],
-      success: 'تم إرسال طلبك! تحقّق من واتساب: أحد أعضاء فريقنا سيرد عليك خلال 24 ساعة.',
+      success: 'تم إرسال طلبك! أحد أعضاء فريقنا سيتواصل معك عبر واتساب خلال 24 ساعة.',
+      error: 'حدث خطأ ما. يرجى المحاولة مرة أخرى أو التواصل معنا مباشرة.',
       submit: 'أرسل طلب VIP ←',
       whatsappMessage: {
         title: 'طلب VIP · Tech Hermanos',

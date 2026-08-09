@@ -5,8 +5,9 @@ import SectionLabel from '@/components/ui/SectionLabel'
 import { QualificationFormData } from '@/types'
 import { useTranslations } from '@/i18n/LocaleContext'
 
-/* Replace with the real Tech Hermanos WhatsApp Business number (country code, no +, no spaces) */
-const WHATSAPP_NUMBER = '212600000000'
+/* Google Apps Script Web App URL (Deploy > New deployment > Web app) that appends rows to the leads sheet */
+const SHEET_WEBHOOK_URL =
+  'https://script.google.com/macros/s/AKfycbwraYTV1in_dbNYLvfnJmKY38pmISSrD8tfqDhbMcT0RFDU4btR0mPGJZs0V0sFWyDp-w/exec'
 
 const emptyForm: QualificationFormData = {
   firstName: '',
@@ -19,6 +20,7 @@ export default function FormSection() {
   const t = useTranslations()
   const [form, setForm] = useState<QualificationFormData>(emptyForm)
   const [sent, setSent] = useState(false)
+  const [error, setError] = useState(false)
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
@@ -26,27 +28,34 @@ export default function FormSection() {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setError(false)
 
-    const m = t.form.whatsappMessage
-    const serviceLabel = t.form.serviceOptions.find((s) => s.id === form.service)?.label ?? m.unspecified
+    const serviceLabel = t.form.serviceOptions.find((s) => s.id === form.service)?.label ?? form.service
 
-    const text = [
-      m.title,
-      `${m.firstName} : ${form.firstName}`,
-      `${m.lastName} : ${form.lastName}`,
-      `${m.whatsapp} : ${form.whatsapp}`,
-      `${m.service} : ${serviceLabel}`,
-    ].join('\n')
+    window.fbq?.('track', 'Lead', {
+      content_name: serviceLabel,
+      content_category: 'Qualification VIP',
+    })
 
-    window.open(
-      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`,
-      '_blank',
-    )
-
-    setSent(true)
-    setForm(emptyForm)
+    try {
+      await fetch(SHEET_WEBHOOK_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({
+          firstName: form.firstName,
+          lastName: form.lastName,
+          whatsapp: form.whatsapp,
+          service: serviceLabel,
+        }),
+      })
+      setSent(true)
+      setForm(emptyForm)
+    } catch {
+      setError(true)
+    }
   }
 
   return (
@@ -124,6 +133,10 @@ export default function FormSection() {
 
             {sent && (
               <div className={styles.successMsg}>{t.form.success}</div>
+            )}
+
+            {error && (
+              <div className={styles.errorMsg}>{t.form.error}</div>
             )}
 
             <Button type="submit" variant="vip" size="lg" fullWidth>
