@@ -101,11 +101,7 @@ export const translations: Record<Locale, Content> = {
         'Tech Hermanos : Web, App, Système & Publicité. Accompagnement digital réservé aux entrepreneurs qui visent la croissance.',
     },
     topbar: {
-      items: [
-        'RÉSERVÉ AUX ENTREPRENEURS VIP',
-        'PLACES LIMITÉES CE MOIS-CI',
-        'WEB · APP · SYSTÈME · PUBLICITÉ',
-      ],
+      items: ['RÉSERVÉ AUX ENTREPRENEURS VIP'],
     },
     nav: {
       links: [
@@ -276,11 +272,7 @@ export const translations: Record<Locale, Content> = {
         'Tech Hermanos: موقع، تطبيق، نظام وإعلانات. مرافقة رقمية مخصصة لرواد الأعمال الطامحين للنمو.',
     },
     topbar: {
-      items: [
-        'مخصص لرواد الأعمال VIP',
-        'أماكن محدودة هذا الشهر',
-        'ويب · تطبيق · نظام · إعلانات',
-      ],
+      items: ['مخصص لرواد الأعمال VIP'],
     },
     nav: {
       links: [

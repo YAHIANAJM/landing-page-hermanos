@@ -19,10 +19,19 @@ export default function Landing({ locale }: { locale: Locale }) {
   useAutoScrollToForm('form-section', 5000)
 
   useEffect(() => {
+    const canonicalUrl = `https://landing.techermanos.org${locale === 'ar' ? '/ar' : '/'}`
+
     document.documentElement.lang = locale
     document.documentElement.dir = locale === 'ar' ? 'rtl' : 'ltr'
     document.title = t.meta.title
     document.querySelector('meta[name="description"]')?.setAttribute('content', t.meta.description)
+    document.querySelector('link[rel="canonical"]')?.setAttribute('href', canonicalUrl)
+    document.querySelector('meta[property="og:title"]')?.setAttribute('content', t.meta.title)
+    document.querySelector('meta[property="og:description"]')?.setAttribute('content', t.meta.description)
+    document.querySelector('meta[property="og:url"]')?.setAttribute('content', canonicalUrl)
+    document.querySelector('meta[property="og:locale"]')?.setAttribute('content', locale === 'ar' ? 'ar_MA' : 'fr_FR')
+    document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', t.meta.title)
+    document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', t.meta.description)
   }, [locale, t])
 
   useEffect(() => {
