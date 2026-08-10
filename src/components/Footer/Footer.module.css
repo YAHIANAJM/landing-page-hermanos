@@ -127,13 +127,29 @@
 }
 
 @media (max-width: 560px) {
+  .footer {
+    padding-block: var(--sp-8) var(--sp-6);
+  }
+
   .top {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-6) var(--sp-4);
+    padding-bottom: var(--sp-6);
     text-align: center;
   }
 
   .brand {
     align-items: center;
+    gap: var(--sp-3);
+  }
+
+  .logoImg {
+    height: 24px;
+  }
+
+  .tagline {
+    max-width: 28ch;
+    margin-inline: auto;
   }
 
   .social {
@@ -146,13 +162,20 @@
     align-items: center;
   }
 
+  .colTitle {
+    margin-bottom: var(--sp-3);
+  }
+
   .linkList {
     align-items: center;
+    gap: var(--sp-2);
   }
 
   .bottom {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    padding-top: var(--sp-5);
+    gap: var(--sp-2);
   }
 }
