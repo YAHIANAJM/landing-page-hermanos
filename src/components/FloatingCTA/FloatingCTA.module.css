@@ -76,18 +76,9 @@
   }
 }
 
-/* Clear BottomNav, which takes over the bottom edge below 768px */
+/* Below 768px, BottomNav's centered FAB takes over as the mobile CTA */
 @media (max-width: 768px) {
   .cta {
-    bottom: calc(64px + 0.75rem);
-  }
-}
-
-@media (max-width: 560px) {
-  .cta {
-    width: calc(100% - 2.5rem);
-    justify-content: center;
-    font-size: var(--text-xs);
-    padding: 0.9rem 1.25rem;
+    display: none;
   }
 }

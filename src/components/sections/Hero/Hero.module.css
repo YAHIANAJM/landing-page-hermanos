@@ -3,6 +3,8 @@
   padding-top: clamp(1.25rem, 3vw, 2.25rem);
   padding-bottom: clamp(3rem, 8vw, 6rem);
   background: var(--gradient-hero);
+  background-size: 160% 160%;
+  animation: heroDrift 16s ease-in-out infinite;
   overflow: hidden;
 }
 
@@ -12,6 +14,49 @@
   inset: 0;
   background: radial-gradient(circle at 85% 20%, rgba(200, 217, 230, 0.14), transparent 55%);
   pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 12% 88%, rgba(212, 169, 74, 0.16), transparent 45%);
+  pointer-events: none;
+}
+
+@keyframes heroDrift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* ── Entrance stagger ── */
+.animIn {
+  opacity: 0;
+  transform: translateY(26px);
+  animation: heroFadeUp 800ms var(--ease-out) forwards;
+}
+
+.heading.animIn {
+  animation-delay: 80ms;
+}
+
+.delay1 {
+  animation-delay: 240ms;
+}
+
+.delay2 {
+  animation-delay: 400ms;
+}
+
+@keyframes heroFadeUp {
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .inner {
@@ -35,7 +80,19 @@
 }
 
 .highlight {
-  color: var(--vip-gold-light);
+  position: relative;
+  background: linear-gradient(90deg, var(--vip-gold-light), var(--vip-gold), var(--vip-gold-light));
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: highlightShine 3.6s linear infinite;
+}
+
+@keyframes highlightShine {
+  to {
+    background-position: -220% center;
+  }
 }
 
 .subtitle {
@@ -68,6 +125,23 @@
   border: 1px solid var(--border-dark);
   box-shadow: var(--shadow-xl);
   background: var(--bg-dark-alt);
+  animation: videoFloat 5s ease-in-out infinite;
+  transition: transform var(--duration-slow) var(--ease), box-shadow var(--duration-slow) var(--ease);
+}
+
+.videoCard:hover {
+  animation-play-state: paused;
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.32);
+}
+
+@keyframes videoFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 .video {
@@ -99,9 +173,69 @@
   border-radius: var(--radius-full);
   background: #e64545;
   box-shadow: 0 0 6px #e64545;
+  animation: dotPulse 1.6s var(--ease) infinite;
+}
+
+@keyframes dotPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.75);
+  }
+}
+
+/* ── Scroll cue ── */
+.scrollCue {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  width: 24px;
+  height: 38px;
+  border: 2px solid rgba(245, 239, 235, 0.35);
+  border-radius: var(--radius-full);
+  opacity: 0;
+  animation: heroFadeUp 800ms var(--ease-out) forwards;
+  animation-delay: 700ms;
+}
+
+.scrollCueDot {
+  width: 4px;
+  height: 8px;
+  margin-top: 6px;
+  border-radius: var(--radius-full);
+  background: var(--vip-gold-light);
+  animation: scrollCueMove 1.8s var(--ease) infinite;
+}
+
+@keyframes scrollCueMove {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
 }
 
 @media (max-width: 880px) {
+  .scrollCue {
+    display: none;
+  }
+
   .inner {
     grid-template-columns: 1fr;
     text-align: center;
@@ -117,5 +251,22 @@
 
   .videoCard {
     max-width: 260px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero,
+  .animIn,
+  .highlight,
+  .videoCard,
+  .playDot,
+  .scrollCue,
+  .scrollCueDot {
+    animation: none;
+  }
+
+  .animIn {
+    opacity: 1;
+    transform: none;
   }
 }

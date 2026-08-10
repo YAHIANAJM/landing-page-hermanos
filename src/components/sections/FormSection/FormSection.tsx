@@ -2,6 +2,7 @@ import { useState } from 'react'
 import styles from './FormSection.module.css'
 import Button from '@/components/ui/Button'
 import SectionLabel from '@/components/ui/SectionLabel'
+import Reveal from '@/components/ui/Reveal'
 import { QualificationFormData } from '@/types'
 import { useTranslations } from '@/i18n/LocaleContext'
 
@@ -68,13 +69,13 @@ export default function FormSection() {
     <section className={styles.section} id="form-section">
       <div className="container">
         <div className={styles.inner}>
-          <div className={styles.textCol}>
+          <Reveal className={styles.textCol}>
             <SectionLabel variant="light">{t.form.label}</SectionLabel>
             <h2 className={styles.heading}>{t.form.heading}</h2>
             <p className={styles.sub}>{t.form.sub}</p>
-          </div>
+          </Reveal>
 
-          <form className={styles.form} onSubmit={handleSubmit}>
+          <Reveal as="form" className={styles.form} delay={120} onSubmit={handleSubmit}>
             <div className={styles.row}>
               <div className={styles.field}>
                 <label className={styles.label} htmlFor="firstName">{t.form.firstName.label}</label>
@@ -148,7 +149,7 @@ export default function FormSection() {
             <Button type="submit" variant="vip" size="lg" fullWidth disabled={submitting}>
               {submitting ? <span className={styles.spinner} aria-hidden="true" /> : t.form.submit}
             </Button>
-          </form>
+          </Reveal>
         </div>
       </div>
     </section>

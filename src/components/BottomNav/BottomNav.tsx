@@ -34,19 +34,46 @@ const icons: Record<string, JSX.Element> = {
   ),
 }
 
+function NavLink({ href, label }: { href: string; label: string }) {
+  return (
+    <a href={href} className={styles.link} aria-label={label}>
+      <span className={styles.icon} aria-hidden="true">
+        {icons[href]}
+      </span>
+    </a>
+  )
+}
+
 export default function BottomNav() {
   const t = useTranslations()
   const visible = useIdleReveal(2200)
+  const sideLinks = t.nav.links.filter((link) => link.href !== '#form-section')
+  const ctaLink = t.nav.links.find((link) => link.href === '#form-section')
+  const splitAt = Math.ceil(sideLinks.length / 2)
+  const leftLinks = sideLinks.slice(0, splitAt)
+  const rightLinks = sideLinks.slice(splitAt)
 
   return (
     <nav className={`${styles.bar} ${visible ? styles.visible : ''}`} aria-label="Navigation">
-      {t.nav.links.map((link) => (
-        <a key={link.href} href={link.href} className={styles.link} aria-label={link.label}>
-          <span className={styles.icon} aria-hidden="true">
-            {icons[link.href]}
+      <div className={styles.sideGroup}>
+        {leftLinks.map((link) => (
+          <NavLink key={link.href} href={link.href} label={link.label} />
+        ))}
+      </div>
+
+      {ctaLink && (
+        <a href={ctaLink.href} className={styles.fab} aria-label={ctaLink.label}>
+          <span className={styles.fabIcon} aria-hidden="true">
+            {icons[ctaLink.href]}
           </span>
         </a>
-      ))}
+      )}
+
+      <div className={styles.sideGroup}>
+        {rightLinks.map((link) => (
+          <NavLink key={link.href} href={link.href} label={link.label} />
+        ))}
+      </div>
     </nav>
   )
 }

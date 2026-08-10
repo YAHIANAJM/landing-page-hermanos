@@ -10,9 +10,8 @@
     left: 0;
     right: 0;
     z-index: 55;
-    justify-content: space-around;
     align-items: center;
-    gap: var(--sp-1);
+    gap: var(--sp-2);
     padding: 0.7rem var(--sp-2);
     background: var(--bg-secondary);
     border-top: 1px solid var(--border);
@@ -28,6 +27,15 @@
     opacity: 1;
     pointer-events: auto;
   }
+}
+
+.sideGroup {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: var(--sp-1);
+  min-width: 0;
 }
 
 .link {
@@ -57,8 +65,61 @@
   background: var(--accent-subtle);
 }
 
+/* ── Centered raised CTA that jumps straight to the form ──
+   A fixed-width flex item flanked by two equal-width .sideGroup
+   containers, so it always lands dead-center; margin-top pulls it
+   up so it overflows above the bar's top edge. */
+.fab {
+  flex: 0 0 58px;
+  align-self: flex-start;
+  margin-top: -22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  border-radius: var(--radius-full);
+  background: var(--gradient-gold);
+  color: var(--bg-dark-alt);
+  border: 4px solid var(--bg-secondary);
+  box-shadow: var(--shadow-lg), 0 0 0 0 rgba(212, 169, 74, 0.5);
+  animation: fabPulse 2.2s var(--ease) infinite;
+  transition: transform 220ms var(--ease);
+}
+
+.fab:active {
+  transform: scale(0.94);
+}
+
+.fabIcon {
+  display: inline-flex;
+  width: 26px;
+  height: 26px;
+}
+
+.fabIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes fabPulse {
+  0% {
+    box-shadow: var(--shadow-lg), 0 0 0 0 rgba(212, 169, 74, 0.5);
+  }
+  70% {
+    box-shadow: var(--shadow-lg), 0 0 0 12px rgba(212, 169, 74, 0);
+  }
+  100% {
+    box-shadow: var(--shadow-lg), 0 0 0 0 rgba(212, 169, 74, 0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .bar {
     transition: none;
+  }
+
+  .fab {
+    animation: none;
   }
 }

@@ -42,6 +42,20 @@
   overflow: hidden;
   border: 1px solid var(--border-dark);
   background: var(--bg-dark-alt);
+  transition: transform var(--duration-slow) var(--ease), border-color var(--duration-slow) var(--ease),
+    box-shadow var(--duration-slow) var(--ease);
+}
+
+.showcaseCard:hover {
+  transform: translateY(-6px);
+  border-color: var(--vip-gold);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.35);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .showcaseCard {
+    transition: none;
+  }
 }
 
 .showcaseVideo {

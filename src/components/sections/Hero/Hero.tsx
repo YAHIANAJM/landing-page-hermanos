@@ -10,15 +10,15 @@ export default function Hero() {
       <div className="container">
         <div className={styles.inner}>
           <div className={styles.content}>
-            <h1 className={styles.heading}>
+            <h1 className={`${styles.heading} ${styles.animIn}`}>
               {t.hero.heading.line1}
               <br />
               {t.hero.heading.line2} <span className={styles.highlight}>{t.hero.heading.highlight}</span>
             </h1>
 
-            <p className={styles.subtitle}>{t.hero.subtitle}</p>
+            <p className={`${styles.subtitle} ${styles.animIn} ${styles.delay1}`}>{t.hero.subtitle}</p>
 
-            <div className={styles.actions}>
+            <div className={`${styles.actions} ${styles.animIn} ${styles.delay2}`}>
               <Button href="#form-section" variant="primary" size="lg">
                 {t.hero.ctaPrimary}
               </Button>
@@ -28,7 +28,7 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className={styles.videoCol}>
+          <div className={`${styles.videoCol} ${styles.animIn} ${styles.delay1}`}>
             <div className={styles.videoCard}>
               <video
                 className={styles.video}
@@ -46,6 +46,10 @@ export default function Hero() {
             </div>
           </div>
         </div>
+
+        <span className={styles.scrollCue} aria-hidden="true">
+          <span className={styles.scrollCueDot} />
+        </span>
       </div>
     </section>
   )

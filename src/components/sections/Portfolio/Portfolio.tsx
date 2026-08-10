@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 import styles from './Portfolio.module.css'
 import SectionLabel from '@/components/ui/SectionLabel'
+import Reveal from '@/components/ui/Reveal'
 import { useTranslations } from '@/i18n/LocaleContext'
 
 const showcaseVideos = [
@@ -109,21 +110,21 @@ export default function Portfolio() {
   return (
     <section className={styles.section} id="portfolio" data-nav-theme="dark">
       <div className="container">
-        <div className={styles.header}>
+        <Reveal className={styles.header}>
           <div>
             <SectionLabel variant="dark">{t.portfolio.label}</SectionLabel>
             <h2 className={styles.heading}>{t.portfolio.heading}</h2>
             <p className={styles.sub}>{t.portfolio.sub}</p>
           </div>
-        </div>
+        </Reveal>
 
         <div className={styles.showcaseGrid}>
-          {showcaseVideos.map((v) => {
+          {showcaseVideos.map((v, index) => {
             const isPlaying = playingId === v.id
             const isMuted = mutedIds[v.id] ?? false
 
             return (
-              <div key={v.id} className={styles.showcaseCard}>
+              <Reveal key={v.id} className={styles.showcaseCard} delay={index * 120}>
                 <video
                   ref={(el) => { showcaseVideoRefs.current[v.id] = el }}
                   className={styles.showcaseVideo}
@@ -218,7 +219,7 @@ export default function Portfolio() {
                     style={{ width: `${progress[v.id] ?? 0}%` }}
                   />
                 </div>
-              </div>
+              </Reveal>
             )
           })}
         </div>
