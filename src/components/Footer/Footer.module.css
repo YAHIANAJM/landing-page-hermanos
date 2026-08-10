@@ -162,6 +162,10 @@
     align-items: center;
   }
 
+  .col:last-child {
+    grid-column: 1 / -1;
+  }
+
   .colTitle {
     margin-bottom: var(--sp-3);
   }
