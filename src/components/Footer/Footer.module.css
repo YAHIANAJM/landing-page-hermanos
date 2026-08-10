@@ -2,6 +2,7 @@
   background: var(--bg-dark-alt);
   padding-block: clamp(3rem, 6vw, 5rem) var(--sp-8);
   position: relative;
+  scroll-margin-top: calc(var(--topbar-height) + var(--nav-height) + var(--sp-4));
 }
 
 .footer::before {

@@ -1,10 +1,22 @@
 .section {
+  position: relative;
   padding-block: var(--section-pad-y);
   background: var(--bg-primary);
 }
 
+.section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(47, 65, 86, 0.09) 1px, transparent 1px);
+  background-size: 20px 20px;
+  mask-image: radial-gradient(ellipse 80% 60% at 15% 20%, #000 0%, transparent 70%);
+  pointer-events: none;
+}
+
 /* ── Two-column layout: stat sidebar (start) + comparison content (end) ── */
 .layout {
+  position: relative;
   display: grid;
   grid-template-columns: 0.85fr 1.15fr;
   gap: clamp(2.5rem, 6vw, 5rem);

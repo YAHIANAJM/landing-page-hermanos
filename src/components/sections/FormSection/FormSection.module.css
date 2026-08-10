@@ -1,6 +1,18 @@
 .section {
+  position: relative;
   padding-block: var(--section-pad-y);
   background: var(--bg-subtle);
+  overflow: hidden;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(47, 65, 86, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  mask-image: radial-gradient(ellipse 70% 60% at 85% 100%, #000 0%, transparent 70%);
+  pointer-events: none;
 }
 
 .inner {
@@ -32,6 +44,7 @@
 }
 
 .form {
+  position: relative;
   background: var(--bg-secondary);
   border-radius: var(--radius-2xl);
   padding: clamp(1.5rem, 4vw, 2.5rem);

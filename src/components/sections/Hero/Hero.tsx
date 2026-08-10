@@ -9,24 +9,11 @@ export default function Hero() {
     <section className={styles.hero} id="home">
       <div className="container">
         <div className={styles.inner}>
-          <div className={styles.content}>
-            <h1 className={`${styles.heading} ${styles.animIn}`}>
-              {t.hero.heading.line1}
-              <br />
-              {t.hero.heading.line2} <span className={styles.highlight}>{t.hero.heading.highlight}</span>
-            </h1>
-
-            <p className={`${styles.subtitle} ${styles.animIn} ${styles.delay1}`}>{t.hero.subtitle}</p>
-
-            <div className={`${styles.actions} ${styles.animIn} ${styles.delay2}`}>
-              <Button href="#form-section" variant="primary" size="lg">
-                {t.hero.ctaPrimary}
-              </Button>
-              <Button href="#comparison" variant="outline" size="lg">
-                {t.hero.ctaSecondary}
-              </Button>
-            </div>
-          </div>
+          <h1 className={`${styles.heading} ${styles.animIn}`}>
+            {t.hero.heading.line1}
+            <br />
+            {t.hero.heading.line2} <span className={styles.highlight}>{t.hero.heading.highlight}</span>
+          </h1>
 
           <div className={`${styles.videoCol} ${styles.animIn} ${styles.delay1}`}>
             <div className={styles.videoCard}>
@@ -43,6 +30,19 @@ export default function Hero() {
                 <span className={styles.playDot} />
                 {t.hero.videoBadge}
               </div>
+            </div>
+          </div>
+
+          <div className={styles.textBody}>
+            <p className={`${styles.subtitle} ${styles.animIn} ${styles.delay1}`}>{t.hero.subtitle}</p>
+
+            <div className={`${styles.actions} ${styles.animIn} ${styles.delay2}`}>
+              <Button href="#form-section" variant="primary" size="lg">
+                {t.hero.ctaPrimary}
+              </Button>
+              <Button href="#comparison" variant="outline" size="lg">
+                {t.hero.ctaSecondary}
+              </Button>
             </div>
           </div>
         </div>

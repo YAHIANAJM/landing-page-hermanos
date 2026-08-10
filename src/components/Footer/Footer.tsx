@@ -31,7 +31,7 @@ export default function Footer() {
   const t = useTranslations()
 
   return (
-    <footer className={styles.footer}>
+    <footer className={styles.footer} id="footer">
       <div className="container">
         <div className={styles.top}>
           <div className={styles.brand}>

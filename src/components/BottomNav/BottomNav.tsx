@@ -32,6 +32,12 @@ const icons: Record<string, JSX.Element> = {
       />
     </svg>
   ),
+  '#footer': (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+      <rect x="3" y="5" width="18" height="14" rx="2.5" />
+      <path d="m4 6.5 8 6 8-6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  ),
 }
 
 function NavLink({ href, label }: { href: string; label: string }) {
@@ -47,7 +53,10 @@ function NavLink({ href, label }: { href: string; label: string }) {
 export default function BottomNav() {
   const t = useTranslations()
   const visible = useIdleReveal(2200)
-  const sideLinks = t.nav.links.filter((link) => link.href !== '#form-section')
+  const sideLinks = [
+    ...t.nav.links.filter((link) => link.href !== '#form-section'),
+    { href: '#footer', label: t.footer.contactTitle },
+  ]
   const ctaLink = t.nav.links.find((link) => link.href === '#form-section')
   const splitAt = Math.ceil(sideLinks.length / 2)
   const leftLinks = sideLinks.slice(0, splitAt)

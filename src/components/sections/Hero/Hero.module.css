@@ -2,8 +2,13 @@
   position: relative;
   padding-top: clamp(1.25rem, 3vw, 2.25rem);
   padding-bottom: clamp(3rem, 8vw, 6rem);
-  background: var(--gradient-hero);
-  background-size: 160% 160%;
+  background-image:
+    linear-gradient(rgba(245, 239, 235, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245, 239, 235, 0.05) 1px, transparent 1px),
+    radial-gradient(circle, rgba(245, 239, 235, 0.1) 1px, transparent 1px),
+    var(--gradient-hero);
+  background-size: 64px 64px, 64px 64px, 16px 16px, 160% 160%;
+  background-position: 0 0, 0 0, 0 0, 0% 50%;
   animation: heroDrift 16s ease-in-out infinite;
   overflow: hidden;
 }
@@ -20,16 +25,17 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 12% 88%, rgba(212, 169, 74, 0.16), transparent 45%);
+  background: radial-gradient(circle at 12% 88%, rgba(212, 169, 74, 0.16), transparent 45%),
+    radial-gradient(ellipse 70% 50% at 50% 0%, rgba(0, 0, 0, 0.18), transparent 70%);
   pointer-events: none;
 }
 
 @keyframes heroDrift {
   0%, 100% {
-    background-position: 0% 50%;
+    background-position: 0 0, 0 0, 0 0, 0% 50%;
   }
   50% {
-    background-position: 100% 50%;
+    background-position: 0 0, 0 0, 0 0, 100% 50%;
   }
 }
 
@@ -63,15 +69,18 @@
   position: relative;
   display: grid;
   grid-template-columns: 1.05fr 1fr;
-  gap: clamp(2rem, 5vw, 4rem);
+  grid-template-areas: 'heading video' 'body video';
+  gap: clamp(1rem, 5vw, 4rem) clamp(2rem, 5vw, 4rem);
   align-items: start;
-}
-
-.content {
   color: var(--text-on-dark);
 }
 
+.textBody {
+  grid-area: body;
+}
+
 .heading {
+  grid-area: heading;
   font-size: clamp(2.25rem, 5vw, var(--text-7xl));
   font-weight: var(--weight-extrabold);
   line-height: var(--leading-tight);
@@ -111,6 +120,7 @@
 
 /* ── Video ── */
 .videoCol {
+  grid-area: video;
   display: flex;
   justify-content: center;
 }
@@ -238,6 +248,7 @@
 
   .inner {
     grid-template-columns: 1fr;
+    grid-template-areas: 'heading' 'video' 'body';
     text-align: center;
   }
 
@@ -251,6 +262,10 @@
 
   .videoCard {
     max-width: 260px;
+  }
+
+  .videoCol {
+    margin-block: var(--sp-2);
   }
 }
 
