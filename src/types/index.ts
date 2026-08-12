@@ -4,7 +4,7 @@ export interface SocialLink {
   icon: 'instagram' | 'facebook' | 'linkedin' | 'tiktok'
 }
 
-export type ServiceType = 'web' | 'app' | 'system' | 'ads'
+export type ServiceType = 'web' | 'app' | 'system' | 'ads' | 'comments-remover'
 
 export interface QualificationFormData {
   firstName: string
